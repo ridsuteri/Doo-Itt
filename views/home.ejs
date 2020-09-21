@@ -31,13 +31,13 @@
     <div id="container">
         <div class="card">
             <h6 class="card-subtitle mb-2 text-muted">TITLE</h6>
-            <input type="text" class="form-control" placeholder="What's the title ?">
+            <input type="text" class="form-control" placeholder="What's the title ?" required>
         </div>
 
         <div class="card">
             <!-- <div class="card-body"> -->
             <h6 class="card-subtitle mb-2 text-muted">DESCRIPTION</h6>
-            <textarea class="form-control" placeholder="Write description here"></textarea>
+            <textarea class="form-control" placeholder="Write description here" required></textarea>
             <!-- </div> -->
         </div>
         <div>
@@ -55,15 +55,18 @@
         <div>
             <div class="category-card">
                 <select class="custom-select">
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">Personal</option>
+                    <option value="2">Professional</option>
+                    <option value="3">Academics</option>
+                    <option value="3">Social</option>
+                    <option value="3">Extra</option>
+                    <option value="3">Others</option>
                 </select>
             </div>
 
             <div class="due-date-card">
                 <label for="start"></label>
-                <input type="date" id="start" name="due-date" value="2020-09-21" min="2020-09-21" max="2020-12-31">
+                <input type="date" id="start" name="due-date" min="2020-09-21" required>
             </div>
         </div>
 
@@ -76,6 +79,7 @@
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
+                <option value="3">Null</option>
             </select>
         </div>
 
@@ -95,7 +99,13 @@
 
             <div class="card-body task-body">
                 <h5 class="card-title ">Task1</h5>
-                <p class="text-muted">Task1 details and due date</p>
+                <p class="text-muted">Task1 details</p>
+                <p class="text-muted"><i class="far fa-calendar-alt"></i> Due-Date</p>
+            </div>
+
+            <div class="tag-box">
+                <h5><span class="badge badge-danger">P : 1</span></h5>
+                <h4><span class="badge badge-secondary">Personal</span></h4>
             </div>
         </div>
 
@@ -105,7 +115,13 @@
             </div>
             <div class="card-body task-body">
                 <h5 class="card-title ">Task2</h5>
-                <p class="text-muted">Task2 details and due date</p>
+                <p class="text-muted">Task2 details and due date are too long,now lets see how it's design got affected when we do so with it</p>
+                <p class="text-muted"><i class="far fa-calendar-alt"></i> Due-Date</p>
+            </div>
+
+            <div class="tag-box">
+                <h5><span class="badge badge-warning">P : 2</span></h5>
+                <h4><span class="badge badge-secondary">Personal</span></h4>
             </div>
         </div>
 

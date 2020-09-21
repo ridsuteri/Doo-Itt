@@ -79,6 +79,10 @@ select{
     padding-top: 5%;
 }
 
+.tag-box{
+    width: 20%;
+}
+
 input.select-task{
     height: 20px;
     width: 25px;
