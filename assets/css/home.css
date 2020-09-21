@@ -1,3 +1,56 @@
 body{
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
+    font-family: 'Ubuntu', sans-serif;
+    /* color: #838383; */
+    margin: 0;
 }
+
+.heading{
+   color: #4c4c4c;
+   margin:20px;
+   text-align: center;
+}
+
+.card{
+    padding: 5px;
+    border: none;
+    /* display: inline-flex; */
+
+}
+
+
+.category-card{
+    display: inline-block;
+    width: 48%;
+    /* float: left; */
+    position: relative;
+}
+
+.due-date-card{
+    display: inline-block;
+    width: 48%;
+    /* float: right; */
+    position: relative;
+    /* right: 0%;; */
+    text-align: right;
+}
+
+select{
+}
+
+#container{
+    margin-left: 30%;
+    width: 45%;
+    
+}
+
+.action-button-container{
+    margin: 20px 0;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+

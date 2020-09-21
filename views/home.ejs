@@ -1,16 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <%=title%>
     </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Ubuntu:ital@1&display=swap"
+        rel="stylesheet">
 
+    <!-- bootstrap cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- fontsawesome cdn -->
+    <script src="https://kit.fontawesome.com/c035598f8c.js" crossorigin="anonymous"></script>
+
+    <!-- date picker cdn -->
+
+    <!-- my stylesheet -->
     <link rel="stylesheet" href="./css/home.css">
 </head>
+
 <body>
-    Hey! bootstrap
+
+    <h1 class="center-align heading">TODO App</h1>
+
+    <div id="container">
+        <div class="card">
+            <!-- <div class="card-body"> -->
+            <h6 class="card-subtitle mb-2 text-muted">DESCRIPTION</h6>
+            <textarea class="form-control" placeholder="Write description here"></textarea>
+            <!-- </div> -->
+        </div>
+        <div>
+            <div class="category-card">
+                <span class="text-muted">CATEGORY</span>
+                <!-- CATEGORY -->
+            </div>
+
+            <div class="due-date-card">
+                <span class="text-muted">DUE-DATE</span>
+                <!-- DUE-DATE -->
+            </div>
+        </div>
+
+        <div>
+            <div class="category-card">
+                <select class="custom-select">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+
+            <div class="due-date-card">
+                <label for="start"></label>
+                <input type="date" id="start" name="due-date" value="2020-09-21" min="2020-09-21" max="2020-12-31">
+            </div>
+        </div>
+
+        <div class="action-button-container">
+            <button type="button" class="btn btn-success btn-lg">
+                <i class="fas fa-plus"></i> Add Task</button>
+
+            <button type="button" class="btn btn-danger btn-lg">
+                <i class="fas fa-trash-alt"></i> Delete Task</button>
+
+        </div>
+
+        <div class="card">
+            <div class="card-body task-body">
+                <h5 class="card-title ">Task1</h5>
+                <p class="text-muted">Task1 details and due date</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body task-body">
+                <h5 class="card-title ">Task2</h5>
+                <p class="text-muted">Task2 details and due date</p>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- bootstrap js files  -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
