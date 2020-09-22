@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%=title%>
+        <%= title %>
     </title>
     <!-- google fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Ubuntu:ital@1&display=swap"
@@ -59,8 +59,7 @@
                     <option value="2">Professional</option>
                     <option value="3">Academics</option>
                     <option value="3">Social</option>
-                    <option value="3">Extra</option>
-                    <option value="3">Others</option>
+                    <option value="3">Other</option>
                 </select>
             </div>
 
@@ -79,7 +78,7 @@
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
-                <option value="3">Null</option>
+                <option value="9">Null</option>
             </select>
         </div>
 
@@ -91,31 +90,72 @@
                 <i class="fas fa-trash-alt"></i> Delete Task</button>
 
         </div>
-
+    <% if(task_list.length!=0){ %>
+        <% for(let i of task_list) { %>
         <div class="card task-card">
             <div class="tick-box">
                 <input type="checkbox" class="select-task">
             </div>
 
             <div class="card-body task-body">
-                <h5 class="card-title ">Task1</h5>
-                <p class="text-muted">Task1 details</p>
-                <p class="text-muted"><i class="far fa-calendar-alt"></i> Due-Date</p>
+                <h5 class="card-title "><%= i.title %></h5>
+                <p class="text-muted"><%= i.desc %></p>
+                <p class="text-muted"><i class="far fa-calendar-alt"></i> <%= i.date %></p>
             </div>
 
             <div class="tag-box">
-                <h5><span class="badge badge-danger">P : 1</span></h5>
-                <h4><span class="badge badge-secondary">Personal</span></h4>
+                
+                <!-- *********giving colors to baddges according to their priority******** -->
+
+                <% if(i.p=='1') {%>
+                    <h5><span class="badge badge-danger">P : <%= i.p %></span></h5>
+                <% }%>
+
+                <% if(i.p=='2') {%>
+                    <h5><span class="badge badge-warning">P : <%= i.p %></span></h5>
+                <% }%>
+
+                <% if(i.p=='3') {%>
+                    <h5><span class="badge badge-info">P : <%= i.p %></span></h5>
+                <% }%>
+
+                <% if(i.p=='0') {%>
+                    <h5><span class="badge badge-light">P : NULL</span></h5>
+                <% }%>
+    
+                <!-- *********giving colors to baddges according to their category******** -->
+    
+                <% if(i.cat=='Personal') {%>
+                    <h4><span class="badge badge-info"> <%= i.cat %> </span></h4>
+                <% }%>
+
+                <% if(i.cat=='Professional') {%>
+                    <h4><span class="badge badge-success"> <%= i.cat %> </span></h4>
+                <% }%>
+                
+                <% if(i.cat=='Academics') {%>
+                    <h4><span class="badge badge-primary"> <%= i.cat %> </span></h4>
+                <% }%>
+                
+                <% if(i.cat=='Social') {%>
+                    <h4><span class="badge badge-dark"> <%= i.cat %> </span></h4>
+                <% }%>
+                
+                <% if(i.cat=='Other') {%>
+                    <h4><span class="badge badge-default"> <%= i.cat %> </span></h4>
+                <% }%>
+    
             </div>
         </div>
 
-        <div class="card task-card">
+        <!-- <div class="card task-card">
             <div class="tick-box">
                 <input type="checkbox" class="select-task">
             </div>
             <div class="card-body task-body">
                 <h5 class="card-title ">Task2</h5>
-                <p class="text-muted">Task2 details and due date are too long,now lets see how it's design got affected when we do so with it</p>
+                <p class="text-muted">Task2 details and due date are too long,now lets see how it's design got affected
+                    when we do so with it</p>
                 <p class="text-muted"><i class="far fa-calendar-alt"></i> Due-Date</p>
             </div>
 
@@ -123,8 +163,14 @@
                 <h5><span class="badge badge-warning">P : 2</span></h5>
                 <h4><span class="badge badge-secondary">Personal</span></h4>
             </div>
-        </div>
+        </div> -->
+        <% } %>
+    <% } %>
 
+    <% if( task_list.length==0 ) {%>
+        <h1 style="text-align: center;">No task Added Yet!</h1>
+
+    <% } %>
     </div>
 
 
