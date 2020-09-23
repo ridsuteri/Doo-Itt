@@ -9,7 +9,7 @@ module.exports.home=function(req,res){
             return;
         }
         return res.render('home',{
-            title : "TODO App", 
+            title : "Doo Itt!", 
             todo_list : task
          });
     });
