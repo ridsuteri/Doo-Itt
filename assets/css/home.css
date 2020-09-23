@@ -1,6 +1,9 @@
 *{
     margin-bottom: 8px;
 }
+a{
+    text-decoration: none;
+}
 body{
     /* background-color: aquamarine; */
     font-family: 'Ubuntu', sans-serif;

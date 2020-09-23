@@ -18,7 +18,6 @@
     <!-- fontsawesome cdn -->
     <script src="https://kit.fontawesome.com/c035598f8c.js" crossorigin="anonymous"></script>
 
-    <!-- date picker cdn -->
 
     <!-- my stylesheet -->
     <link rel="stylesheet" href="./css/home.css">
@@ -29,126 +28,130 @@
     <h1 class="center-align heading">TODO App</h1>
 
     <div id="container">
-        <div class="card">
-            <h6 class="card-subtitle mb-2 text-muted">TITLE</h6>
-            <input type="text" class="form-control" placeholder="What's the title ?" required>
-        </div>
+        <form action="/add-task" method="POST">
+            <div class="card">
+                <h6 class="card-subtitle mb-2 text-muted">TITLE</h6>
+                <input type="text" name="title" class="form-control" placeholder="What's the title ?" required>
+            </div>
 
-        <div class="card">
-            <!-- <div class="card-body"> -->
-            <h6 class="card-subtitle mb-2 text-muted">DESCRIPTION</h6>
-            <textarea class="form-control" placeholder="Write description here" required></textarea>
-            <!-- </div> -->
-        </div>
-        <div>
-            <div class="category-card">
-                <span class="text-muted">CATEGORY</span>
-                <!-- CATEGORY -->
+            <div class="card">
+                <!-- <div class="card-body"> -->
+                <h6 class="card-subtitle mb-2 text-muted">DESCRIPTION</h6>
+                <textarea class="form-control" name="desc" placeholder="Write description here" required></textarea>
+                <!-- </div> -->
+            </div>
+            <div>
+                <div class="category-card">
+                    <span class="text-muted">CATEGORY</span>
+                    <!-- CATEGORY -->
+                </div>
+
+                <div class="due-date-card">
+                    <span class="text-muted">DUE-DATE</span>
+                    <!-- DUE-DATE -->
+                </div>
+            </div>
+
+            <div>
+                <div class="category-card">
+                    <select class="custom-select" name="cat">
+                        <option value="Personal">Personal</option>
+                        <option value="Professional">Professional</option>
+                        <option value="Academics">Academics</option>
+                        <option value="Social">Social</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="due-date-card">
+                    <input type="date" name="date" required>
+                </div>
             </div>
 
             <div class="due-date-card">
-                <span class="text-muted">DUE-DATE</span>
-                <!-- DUE-DATE -->
+                <span class="text-muted center-align">PRIORITY</span>
             </div>
-        </div>
 
-        <div>
-            <div class="category-card">
-                <select class="custom-select">
-                    <option value="1">Personal</option>
-                    <option value="2">Professional</option>
-                    <option value="3">Academics</option>
-                    <option value="3">Social</option>
-                    <option value="3">Other</option>
+            <div>
+                <select class="custom-select" name="p">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="0">Null</option>
                 </select>
             </div>
 
-            <div class="due-date-card">
-                <label for="start"></label>
-                <input type="date" id="start" name="due-date" min="2020-09-21" required>
-            </div>
+            <div class="action-button-container">
+                <button type="submit" class="btn btn-success btn-lg">
+                    <i class="fas fa-plus"></i> Add Task</button>
+        </form>
+
+        <form action="/delete-task" method="get" class="aform">
+            <button class="btn btn-danger btn-lg" type="submit">
+                <i class="fas fa-trash-alt"></i> Delete Task </button>
+
+    </div>
+
+    <% if(todo_list.length!=0){ %>
+    <% for(let i of todo_list) { %>
+    <div class="card task-card">
+        <div class="tick-box">
+            <input type="checkbox" class="select-task" id="checkbox" name="<%= i._id%>">
         </div>
 
-        <div class="due-date-card">
-            <span class="text-muted center-align">PRIORITY</span>
+        <div class="card-body task-body">
+            <h5 class="card-title "><%= i.title %></h5>
+            <p class="text-muted"><%= i.desc %></p>
+            <p class="text-muted"><i class="far fa-calendar-alt"></i> <%= i.date %></p>
         </div>
 
-        <div>
-            <select class="custom-select">
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-                <option value="9">Null</option>
-            </select>
+        <div class="tag-box">
+
+            <!-- *********giving colors to baddges according to their priority******** -->
+
+            <% if(i.p=='1') {%>
+            <h5><span class="badge badge-danger">P : <%= i.p %></span></h5>
+            <% }%>
+
+            <% if(i.p=='2') {%>
+            <h5><span class="badge badge-warning">P : <%= i.p %></span></h5>
+            <% }%>
+
+            <% if(i.p=='3') {%>
+            <h5><span class="badge badge-info">P : <%= i.p %></span></h5>
+            <% }%>
+
+            <% if(i.p=='0') {%>
+            <h5><span class="badge badge-light">P : NULL</span></h5>
+            <% }%>
+
+            <!-- *********giving colors to baddges according to their category******** -->
+
+            <% if(i.cat=='Personal') {%>
+            <h4><span class="badge badge-info"> <%= i.cat %> </span></h4>
+            <% }%>
+
+            <% if(i.cat=='Professional') {%>
+            <h4><span class="badge badge-success"> <%= i.cat %> </span></h4>
+            <% }%>
+
+            <% if(i.cat=='Academics') {%>
+            <h4><span class="badge badge-primary"> <%= i.cat %> </span></h4>
+            <% }%>
+
+            <% if(i.cat=='Social') {%>
+            <h4><span class="badge badge-dark"> <%= i.cat %> </span></h4>
+            <% }%>
+
+            <% if(i.cat=='Other') {%>
+            <h4><span class="badge badge-default"> <%= i.cat %> </span></h4>
+            <% }%>
+
         </div>
+        
+    </div>
 
-        <div class="action-button-container">
-            <button type="button" class="btn btn-success btn-lg">
-                <i class="fas fa-plus"></i> Add Task</button>
-
-            <button type="button" class="btn btn-danger btn-lg">
-                <i class="fas fa-trash-alt"></i> Delete Task</button>
-
-        </div>
-    <% if(task_list.length!=0){ %>
-        <% for(let i of task_list) { %>
-        <div class="card task-card">
-            <div class="tick-box">
-                <input type="checkbox" class="select-task">
-            </div>
-
-            <div class="card-body task-body">
-                <h5 class="card-title "><%= i.title %></h5>
-                <p class="text-muted"><%= i.desc %></p>
-                <p class="text-muted"><i class="far fa-calendar-alt"></i> <%= i.date %></p>
-            </div>
-
-            <div class="tag-box">
-                
-                <!-- *********giving colors to baddges according to their priority******** -->
-
-                <% if(i.p=='1') {%>
-                    <h5><span class="badge badge-danger">P : <%= i.p %></span></h5>
-                <% }%>
-
-                <% if(i.p=='2') {%>
-                    <h5><span class="badge badge-warning">P : <%= i.p %></span></h5>
-                <% }%>
-
-                <% if(i.p=='3') {%>
-                    <h5><span class="badge badge-info">P : <%= i.p %></span></h5>
-                <% }%>
-
-                <% if(i.p=='0') {%>
-                    <h5><span class="badge badge-light">P : NULL</span></h5>
-                <% }%>
-    
-                <!-- *********giving colors to baddges according to their category******** -->
-    
-                <% if(i.cat=='Personal') {%>
-                    <h4><span class="badge badge-info"> <%= i.cat %> </span></h4>
-                <% }%>
-
-                <% if(i.cat=='Professional') {%>
-                    <h4><span class="badge badge-success"> <%= i.cat %> </span></h4>
-                <% }%>
-                
-                <% if(i.cat=='Academics') {%>
-                    <h4><span class="badge badge-primary"> <%= i.cat %> </span></h4>
-                <% }%>
-                
-                <% if(i.cat=='Social') {%>
-                    <h4><span class="badge badge-dark"> <%= i.cat %> </span></h4>
-                <% }%>
-                
-                <% if(i.cat=='Other') {%>
-                    <h4><span class="badge badge-default"> <%= i.cat %> </span></h4>
-                <% }%>
-    
-            </div>
-        </div>
-
-        <!-- <div class="card task-card">
+    <!-- <div class="card task-card">
             <div class="tick-box">
                 <input type="checkbox" class="select-task">
             </div>
@@ -164,16 +167,16 @@
                 <h4><span class="badge badge-secondary">Personal</span></h4>
             </div>
         </div> -->
-        <% } %>
+    <% } %>
     <% } %>
 
-    <% if( task_list.length==0 ) {%>
-        <h1 style="text-align: center;">No task Added Yet!</h1>
+    <% if( todo_list.length==0 ) {%>
+    <h1 style="text-align: center;">No task Added Yet!</h1>
 
     <% } %>
     </div>
 
-
+</form>
 
     <!-- bootstrap js files  -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

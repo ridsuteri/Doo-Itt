@@ -1,6 +1,9 @@
 const { static } = require('express');
 // required express module
 const express=require('express');
+// required db
+const db = require('./config/mongoose');
+
 
 //selecting the port  
 const port=8000;
@@ -13,9 +16,11 @@ app.set('views','./views');
 
 // used static files
 app.use(express.static('./assets'));
+// middleware to read url request
+app.use(express.urlencoded());
 
 // used express routes
-app.get('/',require('./routes/index'));
+app.use('/',require('./routes/index'));
 
 // app listening on port
 app.listen(port,function(err){
