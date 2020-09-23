@@ -24,6 +24,7 @@ app.use('/',require('./routes/index'));
 
 // app listening on port
 app.listen(port,function(err){
+    // if error in running the server
     if(err){
         console.log('Error Running the Server !');
         return;

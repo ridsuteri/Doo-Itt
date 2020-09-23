@@ -1,7 +1,10 @@
+// required mongoose 
 const mongoose=require('mongoose');
 
+// connected to the db
 mongoose.connect('mongodb://localhost/todolist_mj_db');
 
+// acquired connection to db
 const db=mongoose.connection;
 
 //error

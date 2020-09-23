@@ -1,48 +1,6 @@
-const TaskList = require('../models/list');
+const TaskList = require('../models/task');
 
-// var taskList=[
-//     {
-//         title:'task 1',
-//         desc:'this is sample task 1',
-//         date:'01-01-2020',
-//         p:'1',
-//         cat:'Personal'
-//     },
-
-//     {
-//         title:'task 2',
-//         desc:'this is sample task2',
-//         date:'01-01-2020',
-//         p:'2',
-//         cat:'Professional'
-//     },
-
-//     {
-//         title:'task 3',
-//         desc:'this is sample task3',
-//         date:'01-01-2020',
-//         p:'3',
-//         cat:'Academics'
-//     },
-    
-//     {
-//         title:'task 3',
-//         desc:'this is sample task3',
-//         date:'01-01-2020',
-//         p:'0',
-//         cat:'Social'
-//     },
-    
-//     {
-//         title:'task 3',
-//         desc:'this is sample task3',
-//         date:'01-01-2020',
-//         p:'0',
-//         cat:'Other'
-//     }
-
-// ]
-
+// controller for home page
 module.exports.home=function(req,res){
      //fetching data from database
      TaskList.find({},function(err,task){
@@ -57,9 +15,8 @@ module.exports.home=function(req,res){
     });
 };
 
+// controller for adding task
 module.exports.add=function(req,res){
-    // console.log(req.body);
-    // return res.redirect("back");
     TaskList.create(req.body,function(err,task){
         if(err){console.log('error in creating the list');return;}
         console.log(task);
@@ -67,6 +24,7 @@ module.exports.add=function(req,res){
     });
 };
 
+// controller for deleting task
 module.exports.delete=function(req,res){
 
     //getting the id of selected boxes

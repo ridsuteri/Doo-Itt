@@ -27,32 +27,38 @@
 
     <h1 class="center-align heading">TODO App</h1>
 
+    <!-- this container div will hold the whole todo list -->
     <div id="container">
         <form action="/add-task" method="POST">
+
+            <!-- div for adding title of the task -->
             <div class="card">
                 <h6 class="card-subtitle mb-2 text-muted">TITLE</h6>
                 <input type="text" name="title" class="form-control" placeholder="What's the title ?" required>
             </div>
 
+            <!-- div for adding description of the task -->
             <div class="card">
-                <!-- <div class="card-body"> -->
                 <h6 class="card-subtitle mb-2 text-muted">DESCRIPTION</h6>
                 <textarea class="form-control" name="desc" placeholder="Write description here" required></textarea>
-                <!-- </div> -->
             </div>
+
+            <!-- this div is for category and due-date heading -->
             <div>
+
                 <div class="category-card">
                     <span class="text-muted">CATEGORY</span>
-                    <!-- CATEGORY -->
                 </div>
 
                 <div class="due-date-card">
                     <span class="text-muted">DUE-DATE</span>
-                    <!-- DUE-DATE -->
                 </div>
+
             </div>
 
+            <!-- this div is for drop down list of category and due date input -->
             <div>
+
                 <div class="category-card">
                     <select class="custom-select" name="cat">
                         <option value="Personal">Personal</option>
@@ -66,12 +72,15 @@
                 <div class="due-date-card">
                     <input type="date" name="date" required>
                 </div>
+
             </div>
 
+            <!-- this div is for priority heading  -->
             <div class="due-date-card">
                 <span class="text-muted center-align">PRIORITY</span>
             </div>
 
+            <!-- this div is for select list for priority input -->
             <div>
                 <select class="custom-select" name="p">
                     <option value="1">One</option>
@@ -81,19 +90,39 @@
                 </select>
             </div>
 
+            <!-- this action button container div contains delete task and add task button -->
+            <!-- i have closed the enclosed a form till add task button -->
+
+            <!-- and has enclosed delete task button wihthin another form to get checkboxes id to delete the task -->
+
             <div class="action-button-container">
                 <button type="submit" class="btn btn-success btn-lg">
                     <i class="fas fa-plus"></i> Add Task</button>
         </form>
+        <!-- form ended here :for adding data -->
 
+        <!-- started another form for deleting the task via getting id of the task via their checkboxes -->
         <form action="/delete-task" method="get" class="aform">
             <button class="btn btn-danger btn-lg" type="submit">
                 <i class="fas fa-trash-alt"></i> Delete Task </button>
-
     </div>
+    <!-- this is the end of the action button container (which was to hold action buttons) -->
 
+    <!-- checked if the list is empty or not..if not empty then print tasks in form of cards -->
+    <!-- else no task available message will be printed -->
     <% if(todo_list.length!=0){ %>
+
+    <!-- loop to iterate over the tasks-->
     <% for(let i of todo_list) { %>
+
+    <!-- this div with task-card class holds the task  -->
+
+    <!-- this task card div is further divided into 3 divs inline flex divs-->
+
+    <!-- 1. tick box  to hold checkbox-->
+    <!-- 2. task-body to hold task details -->
+    <!-- 3. tag-box to hold category and priority tags of the task -->
+
     <div class="card task-card">
         <div class="tick-box">
             <input type="checkbox" class="select-task" id="checkbox" name="<%= i._id%>">
@@ -148,35 +177,21 @@
             <% }%>
 
         </div>
-        
+
     </div>
 
-    <!-- <div class="card task-card">
-            <div class="tick-box">
-                <input type="checkbox" class="select-task">
-            </div>
-            <div class="card-body task-body">
-                <h5 class="card-title ">Task2</h5>
-                <p class="text-muted">Task2 details and due date are too long,now lets see how it's design got affected
-                    when we do so with it</p>
-                <p class="text-muted"><i class="far fa-calendar-alt"></i> Due-Date</p>
-            </div>
 
-            <div class="tag-box">
-                <h5><span class="badge badge-warning">P : 2</span></h5>
-                <h4><span class="badge badge-secondary">Personal</span></h4>
-            </div>
-        </div> -->
     <% } %>
     <% } %>
 
+    <!-- if task list is empty then no task added message will be printed -->
     <% if( todo_list.length==0 ) {%>
     <h1 style="text-align: center;">No task Added Yet!</h1>
 
     <% } %>
     </div>
 
-</form>
+    </form>
 
     <!-- bootstrap js files  -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
